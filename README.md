@@ -1,2 +1,2 @@
 # sam-alpha-uno
-Sample repo 
+Sample repo
