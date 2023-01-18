@@ -8,12 +8,27 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
+    id 'jacoco'
     id 'application'
+    id "org.sonarqube" version "3.5.0.2730"
+}
+
+description = 'Example of SonarQube Scanner for Gradle Usage'
+version = '1.0'
+
+sonarqube {
+    properties {
+        //property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
+        property 'sonar.projectKey','sam-alpha-uno'
+        property 'sonar.host.url','http://localhost:9000'
+        property 'sonar.login','sqp_d1c95b943ec072c25906eb4432047eb541e0384f'
+    }
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -27,4 +42,10 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'com.sam.alpha.App'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
